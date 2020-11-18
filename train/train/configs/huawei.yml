@@ -1,0 +1,87 @@
+MODEL:
+#  PRETRAIN_CHOICE: 'imagenet'
+  PRETRAIN_CHOICE: 'finetune'
+#  PRETRAIN_PATH: '/home/lab3/bi/0716/Veri/resnest50-528c19ca.pth'
+#  PRETRAIN_PATH: '/home/lab3/下载/efficientnet-b3-5fb5a3c3.pth'
+#  PRETRAIN_PATH: '/home/lab3/bi/0716/Veri/densenet169_ibn_a-9f32c161.pth'
+#  PRETRAIN_PATH: '/home/lab3/下载/res2net50_v1b_26w_4s-3cf99910.pth'
+#  PRETRAIN_PATH: '/home/lab3/下载/resnet34_ibn_a-94bc1577.pth'
+  PRETRAIN_PATH: ''
+#  PRETRAIN_PATH: '/home/lab3/bi/0816_MGN/output/ibn50_320/last_half_layer3.pth'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+#  FROZEN: 5
+#  NAME: 'EfficientNetb3'
+#  NAME: 'densenet169_ibn_a'
+  NAME: 'resnet50_ibn_a'
+#  NAME: 'res2net50_v1b'
+#  NAME: 'resnest50'
+  NO_MARGIN: True #soft margin
+#  NO_MARGIN: False
+  DEVICE_ID: ('0')
+  COS_LAYER: False  #arcface
+
+INPUT:
+  SIZE_TRAIN: [512, 512]
+#  SIZE_TRAIN: [730, 730]
+#  SIZE_TRAIN: [256, 256]
+  SIZE_TEST: [512, 512]
+#  SIZE_TEST: [320, 320]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+
+DATASETS:
+  NAMES: ('veri')
+  ROOT_DIR: ''
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 6
+#  NUM_INSTANCE: 16
+  NUM_WORKERS: 4
+
+#
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 90
+  BASE_LR: 0.001
+#  BASE_LR: 0.0001
+  IMS_PER_BATCH: 42
+#  IMS_PER_BATCH: 12
+#  STEPS: [40, 70]
+  STEPS: [20]
+#  STEPS: [30,50,70]
+  GAMMA: 0.1
+  WARMUP_FACTOR: 0.01
+  WARMUP_EPOCHS: -1
+#  WARMUP_EPOCHS: 0
+#  WARMUP_EPOCHS: 15
+  WARMUP_METHOD: 'linear'
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 10
+  LOG_PERIOD: 50
+  EVAL_PERIOD: 10
+  FP16: True
+  MARGIN: 0.3
+
+TEST:
+  EVAL: True
+  IMS_PER_BATCH: 80
+  RE_RANKING: True
+  RE_RANKING_TRACK: False
+#  WEIGHT:  '/home/lab3/bi/0816_MGN/output/res2net_layer233/last_half_layer3.pth'
+  WEIGHT:  '/home/lab3/bi/0816_MGN/output/res2net_layer233/infer.pth'
+#  WEIGHT:  '/home/lab3/bi/0816_MGN/output/res2net_layer233/last_half_layer3.pth'
+#  WEIGHT:  '/home/lab3/bi/0731/output/resnest/resnest50_448_balance10.pth'
+#  WEIGHT:  '/home/lab3/bi/0731/output/resnet50_ibn_a_20.pth'
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+  FLIP_FEATS: 'off'
+#  FLIP_FEATS: 'on'
+#'/home/lab3/bi/0816_MGN/output/res2net'
+OUTPUT_DIR: '/home/lab3/bi/0816_MGN/output/ibn50_320'
+#OUTPUT_DIR: '/home/lab3/bi/0816_MGN/output'
+
+

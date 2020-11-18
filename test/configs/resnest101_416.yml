@@ -1,0 +1,52 @@
+MODEL:
+  PRETRAIN_CHOICE: ''
+  PRETRAIN_PATH: ''
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NAME: 'resnest101'
+  NO_MARGIN: True
+  DEVICE_ID: ('0')
+  ID: '5'
+INPUT:
+  SIZE_TRAIN: [416, 416]
+  SIZE_TEST: [416, 416]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+
+DATASETS:
+  NAMES: ('sm')
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 6
+  NUM_WORKERS: 8
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD'
+  MAX_EPOCHS: 90
+  BASE_LR: 0.01
+  IMS_PER_BATCH: 96
+  STEPS: [40, 70]
+  GAMMA: 0.1
+  WARMUP_FACTOR: 0.01
+  WARMUP_EPOCHS: 10
+  WARMUP_METHOD: 'linear'
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 10
+  LOG_PERIOD: 50
+  EVAL_PERIOD: 10
+
+TEST:
+  EVAL: True
+  IMS_PER_BATCH: 100
+  RE_RANKING: False
+  RE_RANKING_TRACK: False
+  WEIGHT: 'weight/resnest50512half.pth'
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+
+OUTPUT_DIR: 'data/resnest_512/'
+
+

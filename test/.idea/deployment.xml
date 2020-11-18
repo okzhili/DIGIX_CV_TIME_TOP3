@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="digix@124.71.151.249:12227">
+    <serverData>
+      <paths name="digix@124.71.151.249:12227">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/digix/workspace/推理代码" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hawei">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/digix/workspace/SMJS" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@net.videojj.com:28940 (1)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@net.videojj.com:6672">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data-tmp/code" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sunziruo@211.87.232.151:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home1/sunziruo/SMJS" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

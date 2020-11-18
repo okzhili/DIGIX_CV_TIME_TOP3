@@ -1,0 +1,18 @@
+# pip install -U -r requirements.txt
+yacs
+pytorch-extension
+Cython
+numpy
+opencv-python
+torch==1.6.0
+torchvision
+matplotlib
+pillow
+tensorboard
+scipy
+tqdm
+numba
+albumentations
+faiss-cpu
+FlyAI
+prefetch_generator

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ef33480a-6069-4958-bb00-55244ea30e1c" name="hawei" url="http://124.71.151.249">
+        <fileTransfer host="124.71.151.249" port="12227" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="12227" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

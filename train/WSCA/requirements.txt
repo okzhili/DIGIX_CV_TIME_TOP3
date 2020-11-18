@@ -1,0 +1,15 @@
+# pip install -U -r requirements.txt
+yacs
+pytorch-extension
+Cython
+numpy==1.17
+opencv-python
+flyai
+torch==1.4.0
+torchvision==0.5.0
+matplotlib
+pillow
+tensorboard
+scipy
+tqdm
+

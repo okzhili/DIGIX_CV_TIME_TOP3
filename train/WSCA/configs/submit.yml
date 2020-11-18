@@ -1,0 +1,61 @@
+MODEL:
+  PRETRAIN_CHOICE: 'self'
+  NAME: 'resnest50'
+  DEVICE_ID: ('0')
+  MODEL_TYPE: 'baseline'
+  METRIC_LOSS_TYPE: 'none'
+  TRIPLET_LOSS_WEIGHT: 1.0
+  IF_LABELSMOOTH: 'on'
+  POOLING_METHOD: 'GeM'
+  ID_LOSS_TYPE: 'softmax'
+
+
+INPUT:
+  SIZE_TRAIN: [320, 320]
+  SIZE_TEST: [320, 320]
+#  SIZE_TEST: [200, 200]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+
+DATASETS:
+  TRAIN: ('veri',)
+  TEST: ('veri',)
+#num instance 4  每个类别采样4张
+
+SOLVER:
+  FP16: True
+  LR_SCHEDULER: 'warmup_multi_step'
+  OPTIMIZER_NAME: 'Adam'
+  WARMUP_ITERS: 5  #warm up 5个epoch
+  MAX_EPOCHS: 64     #训练epoch
+  BASE_LR: 0.00035   #在这里学习率一直减小
+  STEPS: (30, 55)  #30 50epoch学习率/10
+
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 32   #batch size大小
+  LOG_PERIOD: 100
+  EVAL_PERIOD: 2 #每隔两个epoch 评估一次
+
+  COSINE_MARGIN: 0.35
+  COSINE_SCALE: 64 #  circle loss 参数
+  FREEZE_BASE_EPOCHS: 2
+
+TEST:
+  DO_PCA: False
+  DO_RERANK: False
+  DO_DBA: False
+  QUERY_EXPANSION: False
+  IMS_PER_BATCH: 128
+  WEIGHT: "./dianshang/crop_half_model.pth"
+  NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+  RERANK_PARAM: [50, 15, 0.5]
+  FLIP_TEST: False
+  WRITE_RESULT: True
+  USE_VOC: False   #camera和oriention
+
+OUTPUT_DIR: "/home/lab3/bi/0716/Veri/ai_city/tools/output/crop"
+
